@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backwards Clock!</title>
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Tangerine">
+</head>
+<script>
+    function display_c(){
+        var refresh=1000; // Refresh rate in milli seconds
+        mytime=setTimeout('display_ct()',refresh)
+        }
+
+    function display_ct() {
+        var sec = new Date().getSeconds();
+        var secMod = 60 - new Date().getSeconds();
+
+        var min = new Date().getMinutes();
+        var minMod = 60 - new Date().getMinutes();
+
+        var hour = new Date().getHours();
+        var hourMod = 24 - new Date().getHours();
+        
+
+        var clock = hour+":"+min+":"+sec;
+        var clockMod = hourMod+":"+minMod+":"+secMod;
+        document.getElementById('clock').innerHTML = clock;
+        document.getElementById('clockMod').innerHTML = clockMod;
+        display_c();
+        }
+</script>
+
+<body onload=display_ct();>
+    <div class="clock-box">
+        <div class="clock" id="clockMod"></div>
+        <div class="subClock">LEFT OF TODAY</div>
+    </div>
+        <div class="clock-reg" id="clock"></div>
+    
+    
+</body>
+</html>
